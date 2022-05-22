@@ -8,6 +8,7 @@
 }
 
 .chart__title {
+    box-sizing: border-box;
     font-family: var(--font);
     font-size: 2.4rem;
     font-weight: 700;
@@ -16,5 +17,81 @@
 }
 
 .chart__bars {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+}
 
+.chart__divider {
+    box-sizing: border-box;
+    width: 100%;
+    height: 0.2rem;
+    background-color: var(--color-cream);
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+
+.chart__row {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chart__row-section {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+}
+
+.chart__row-section--top {
+    align-self: flex-start;
+}
+
+.chart__row-section--bottom {
+    align-self: flex-end;
+}
+
+.chart__total {
+    line-height: 1;
+    font-family: var(--font);
+    margin-top: 0;
+}
+
+.chart__total--title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-medium-brown);
+    letter-spacing: 0.01rem;
+    margin-bottom: 0.8rem;
+}
+
+.chart__total--amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-dark-brown);
+    margin-bottom: 0;
+}
+
+.chart__update {
+    line-height: 1;
+    font-family: var(--font);
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.chart__update--percent {
+    font-weight: 700;
+    color: var(--color-dark-brown);
+    margin-bottom: 0.4rem;
+    text-align: right;
+}
+
+.chart__update--description {
+    font-weight: 400;
+    color: var(--color-medium-brown);
+    letter-spacing: 0.01rem;
+    margin-bottom: 0;
 }
