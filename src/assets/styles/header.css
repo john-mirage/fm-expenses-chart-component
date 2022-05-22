@@ -1,0 +1,42 @@
+.header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 9.6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 1.6rem;
+    background-color: var(--color-soft-red);
+    border-radius: 1rem;
+}
+
+.header__section {
+    flex: 0 0 auto;
+}
+
+.header__balance {
+    margin-top: 0;
+    line-height: 1;
+    font-family: var(--font);
+    color: var(--color-very-pale-orange);
+}
+
+.header__balance--title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+}
+
+.header__balance--amount {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.header__logo {
+    width: 6rem;
+    height: auto;
+}
