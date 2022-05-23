@@ -40,3 +40,25 @@
     width: 6rem;
     height: auto;
 }
+
+@media screen and (min-width: 572px) {
+    .header {
+        height: 12.4rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+        margin-bottom: 2.4rem;
+        border-radius: 2rem;
+    }
+
+    .header__balance--title {
+        font-size: 1.8rem;
+    }
+
+    .header__balance--amount {
+        font-size: 3.2rem;
+    }
+
+    .header__logo {
+        width: 7.2rem;
+    }
+}
