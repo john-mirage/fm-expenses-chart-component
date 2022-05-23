@@ -21,6 +21,16 @@ const barProgressTiming: KeyframeAnimationOptions = {
   fill: "forwards"
 }
 
+const days = [
+  "sun",
+  "mon",
+  "tue",
+  "wed",
+  "thu",
+  "fri",
+  "sat"
+];
+
 class ChartBars extends HTMLElement {
   bars: Bar[] | false;
 
@@ -32,7 +42,8 @@ class ChartBars extends HTMLElement {
   createBar(
     bar: Bar,
     index: number,
-    maxAmount: number
+    maxAmount: number,
+    currentDate: Date
   ) {
     const height = String(Math.round((bar.amount * 100) / maxAmount));
     const template = document.getElementById("template-bar") as HTMLTemplateElement;
@@ -43,7 +54,7 @@ class ChartBars extends HTMLElement {
     const chartBarAmount = fragment.querySelector(".bar__amount") as HTMLParagraphElement;
     chartBarDay.textContent = bar.day;
     chartBarAmount.textContent = `$${String(bar.amount)}`;
-    chartBar.classList.add(bar.amount === maxAmount ? "bar--cyan" : "bar--red");
+    chartBar.classList.add(days[currentDate.getDay()] === bar.day ? "bar--cyan" : "bar--red");
     chartBarProgress.style.height = `${height}%`;
     this.appendChild(chartBar);
     if (index > 0) {
@@ -57,12 +68,13 @@ class ChartBars extends HTMLElement {
 
   connectedCallback() {
     if (this.bars) {
+      const currentDate = new Date();
       const barAmounts = this.bars.map((bar) => bar.amount);
       const maxAmount = Math.max(...barAmounts);
       const gridItems = String(this.bars.length);
       this.style.gridTemplateColumns = `repeat(${gridItems}, 1fr)`;
       this.classList.add("chart__bars");
-      this.bars.forEach((bar, index) => this.createBar(bar, index, maxAmount));
+      this.bars.forEach((bar, index) => this.createBar(bar, index, maxAmount, currentDate));
     } else {
       console.warn("The chart bars web component has no bars");
     }
