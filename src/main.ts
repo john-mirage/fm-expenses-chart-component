@@ -29,7 +29,11 @@ class ChartBars extends HTMLElement {
     this.bars = false;
   }
 
-  createBar(bar, index, maxAmount) {
+  createBar(
+    bar: Bar,
+    index: number,
+    maxAmount: number
+  ) {
     const height = String(Math.round((bar.amount * 100) / maxAmount));
     const template = document.getElementById("template-bar") as HTMLTemplateElement;
     const fragment = template.content.cloneNode(true) as DocumentFragment;
