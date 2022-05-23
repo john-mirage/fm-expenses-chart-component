@@ -1,20 +1,54 @@
 import "./main.css";
 import bars from "@data/bars.json";
-import ChartBar from "@components/chart-bar";
 
-const chartBars = document.getElementById("chat-bars");
+interface Bar {
+  day: string;
+  amount: number;
+}
 
-customElements.define("chart-bar", ChartBar);
+interface ChartBarsProps {
+  bars: Bar[];
+}
 
-const barAmounts = bars.map((bar) => bar.amount);
-const barAmountMax = Math.max(...barAmounts);
+class ChartBars extends HTMLElement {
+  bars: Bar[] | false;
 
-bars.forEach((bar) => {
-  const percent = Math.round((bar.amount * 100) / barAmountMax);
-  const chartBar = document.createElement("chart-bar");
-  chartBar.setAttribute("day", bar.day);
-  chartBar.setAttribute("amount", bar.amount);
-  chartBar.setAttribute("height", `${String(percent)}%`);
-  if (bar.amount === barAmountMax) chartBar.setAttribute("max", "true");
-  chartBars.appendChild(chartBar);
-});
+  constructor() {
+    super();
+    this.bars = false;
+  }
+
+  createBar(bar, maxAmount) {
+    const height = String(Math.round((bar.amount * 100) / maxAmount));
+    const template = document.getElementById("template-bar") as HTMLTemplateElement;
+    const fragment = template.content.cloneNode(true) as DocumentFragment;
+    const chartBar = fragment.querySelector(".bar") as HTMLDivElement;
+    const chartBarProgress = fragment.querySelector(".bar__progress") as HTMLDivElement;
+    const chartBarDay = fragment.querySelector(".bar__day") as HTMLParagraphElement;
+    chartBarDay.textContent = bar.day;
+    chartBar.classList.add(bar.amount === maxAmount ? "bar--cyan" : "bar--red");
+    chartBarProgress.style.height = `${height}%`;
+    this.appendChild(chartBar);
+  }
+
+  connectedCallback() {
+    if (this.bars) {
+      const barAmounts = this.bars.map((bar) => bar.amount);
+      const maxAmount = Math.max(...barAmounts);
+      const gridItems = String(this.bars.length);
+      this.style.gridTemplateColumns = `repeat(${gridItems}, 1fr)`;
+      this.bars.forEach((bar) => this.createBar(bar, maxAmount));
+      this.classList.add("chart__bars");
+    } else {
+      console.warn("The chart bars web components has no bars");
+    }
+  }
+}
+
+customElements.define("chart-bars", ChartBars);
+
+const chartTitle = document.getElementById("chart-title") as HTMLHeadingElement;
+const chartBars = document.createElement("chart-bars") as HTMLElement & ChartBarsProps;
+
+chartBars.bars = bars;
+chartTitle.after(chartBars);

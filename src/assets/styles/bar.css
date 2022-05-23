@@ -1,0 +1,40 @@
+.bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.bar__track {
+    flex: 1 1 0;
+    display: flex;
+    width: 100%;
+}
+
+.bar__progress {
+    width: 100%;
+    height: 0;
+    margin-top: auto;
+    border-radius: 0.4rem;
+}
+
+.bar--red .bar__progress {
+    background-color: var(--color-soft-red);
+}
+
+.bar--cyan .bar__progress {
+    background-color: var(--color-cyan);
+}
+
+.bar__day {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    padding-top: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    font-family: var(--font);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-medium-brown);
+}

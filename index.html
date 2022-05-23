@@ -12,44 +12,50 @@
   </head>
 
   <body class="page">
+    <main class="page__container">
 
-    <!-- Header -->
-    <header class="header">
-      <div class="header__section">
-        <p class="header__balance header__balance--title">My balance</p>
-        <p class="header__balance header__balance--amount">$921.48</p>
-      </div>
-      <div class="header__section">
-        <svg class="header__logo" viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" fill-rule="evenodd">
-            <circle fill="#382314" cx="48" cy="24" r="24"/>
-            <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23"/>
-          </g>
-        </svg>
-      </div>
-    </header>
+      <!-- Header -->
+      <header class="header">
+        <div class="header__section">
+          <p class="header__balance header__balance--title">My balance</p>
+          <p class="header__balance header__balance--amount">$921.48</p>
+        </div>
+        <div class="header__section">
+          <svg class="header__logo" viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+              <circle fill="#382314" cx="48" cy="24" r="24"/>
+              <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23"/>
+            </g>
+          </svg>
+        </div>
+      </header>
 
-    <!-- Chart -->
-    <main class="chart">
-      <h1 class="chart__title">Spending - Last 7 days</h1>
-      <div class="chart__bars" id="chat-bars"></div>
-      <div class="chart__divider"></div>
-      <div class="chart__row">
-        <div class="chart__row-section chart__row-section--top">
-          <p class="chart__total chart__total--title">Total this month</p>
-          <p class="chart__total chart__total--amount">$478.33</p>
-        </div>
-        <div class="chart__row-section chart__row-section--bottom">
-          <p class="chart__update chart__update--percent">+2.4%</p>
-          <p class="chart__update chart__update--description">from last month</p>
+      <!-- Chart -->
+      <div class="chart">
+        <h1 class="chart__title" id="chart-title">Spending - Last 7 days</h1>
+        <div class="chart__divider"></div>
+        <div class="chart__row">
+          <div class="chart__row-section chart__row-section--top">
+            <p class="chart__total chart__total--title">Total this month</p>
+            <p class="chart__total chart__total--amount">$478.33</p>
+          </div>
+          <div class="chart__row-section chart__row-section--bottom">
+            <p class="chart__update chart__update--percent">+2.4%</p>
+            <p class="chart__update chart__update--description">from last month</p>
+          </div>
         </div>
       </div>
+
     </main>
 
     <!-- Template | bar -->
-    <template id="template-chart-bar">
-      <div class="track"></div>
-      <p class="day"></p>
+    <template id="template-bar">
+      <div class="bar">
+        <div class="bar__track">
+          <div class="bar__progress"></div>
+        </div>
+        <p class="bar__day"></p>
+      </div>
     </template>
 
     <script type="module" src="/src/main.ts"></script>
