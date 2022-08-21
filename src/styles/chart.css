@@ -102,6 +102,8 @@
     }
 
     .chart__bars {
+        padding: 0;
+        margin: 0;
         gap: 1.8rem;
     }
 

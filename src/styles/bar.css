@@ -21,7 +21,6 @@
     width: 100%;
     height: 0;
     transform-origin: bottom;
-    transform: scaleY(0);
     list-style: none;
     border-radius: 0.4rem;
     transition: background-color 150ms;
