@@ -18,10 +18,12 @@
 }
 
 .chart__bars {
+    margin: 0;
     display: grid;
     gap: 1.2rem;
     width: 100%;
     height: 17.4rem;
+    padding: 0;  
 }
 
 .chart__divider {
@@ -102,8 +104,6 @@
     }
 
     .chart__bars {
-        padding: 0;
-        margin: 0;
         gap: 1.8rem;
     }
 
